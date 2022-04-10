@@ -18,6 +18,10 @@ func (r LinkedList) First() *Node {
 	return r.firstItem
 }
 
+func (r LinkedList) Last() *Node {
+	return r.lastItem
+}
+
 func (r *LinkedList) AppendToHead(data interface{}) {
 	n := Node{
 		data: data,
