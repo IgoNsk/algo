@@ -36,6 +36,16 @@ func (r *LinkedList) AppendToTail(data interface{}) {
 	r.lastItem = &n
 }
 
+func (r *LinkedList) FindNodeWithValue(data interface{}) *Node {
+	for node := r.First(); node != nil; node = node.Next() {
+		if node.Data() == data {
+			return node
+		}
+	}
+
+	return nil
+}
+
 func (r *LinkedList) RemoveNode(n *Node) {
 	if n.prev != nil {
 		n.prev.next = n.next
