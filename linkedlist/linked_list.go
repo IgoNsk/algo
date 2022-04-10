@@ -10,6 +10,10 @@ func NewLinkedList(data interface{}) *LinkedList {
 	return &LinkedList{n, n}
 }
 
+func NewEmptyLinkedList() *LinkedList {
+	return &LinkedList{nil, nil}
+}
+
 func (r LinkedList) First() *Node {
 	return r.firstItem
 }
@@ -21,7 +25,12 @@ func (r *LinkedList) AppendToHead(data interface{}) {
 		next: r.firstItem,
 	}
 
-	r.firstItem.prev = &n
+	if r.firstItem != nil {
+		r.firstItem.prev = &n
+	} else {
+		r.firstItem = &n
+	}
+
 	r.firstItem = &n
 }
 
@@ -32,7 +41,12 @@ func (r *LinkedList) AppendToTail(data interface{}) {
 		next: nil,
 	}
 
-	r.lastItem.next = &n
+	if r.lastItem != nil {
+		r.lastItem.next = &n
+	} else {
+		r.firstItem = &n
+	}
+
 	r.lastItem = &n
 }
 
